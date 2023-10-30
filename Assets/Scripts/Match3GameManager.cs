@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 /// Clase principal que gestiona el juego de combinación de 3 (Match-3).
 /// </summary>
 
-public class Match3GameManager : MonoBehaviour {
+public class Match3GameManager : MonoBehaviour
+{
     bool ban = true;
     // Matriz que contiene todos los tiles del juego.
     Tile[,] grid;
@@ -16,7 +17,7 @@ public class Match3GameManager : MonoBehaviour {
     // Dimensiones de la matriz/grid del juego.
     [SerializeField]
     int sizeX;
-    
+
     public int sizeY;
 
     // Array de los prefabs de los tiles que pueden ser instanciados.
@@ -47,7 +48,7 @@ public class Match3GameManager : MonoBehaviour {
     string lvl5 = "Nivel5";
 
 
-    void Start ()
+    void Start()
     {
         // Inicializar matriz de tiles y llenarla.
         grid = new Tile[sizeX, sizeY * 2];
@@ -55,7 +56,7 @@ public class Match3GameManager : MonoBehaviour {
         {
             for (int j = 0; j < sizeY; j++)
             {
-                InstantiateTile(i,j);
+                InstantiateTile(i, j);
             }
         }
 
@@ -82,7 +83,7 @@ public class Match3GameManager : MonoBehaviour {
             for (int j = sizeY * 2 - 1; j >= 0; j--)
             {
 
-                for (int i = sizeX -1; i >= 0; i--)
+                for (int i = sizeX - 1; i >= 0; i--)
                 {
                     if (grid[i, j] != null)
                         s += grid[i, j].name;
@@ -94,31 +95,54 @@ public class Match3GameManager : MonoBehaviour {
             print(s);
         }
 
-        if (puntaje.ganar(50000) && ban)    //PUNTAJE crear una variable BAN para que no se siga repitiendo
+
+
+
+        if (SceneManager.GetActiveScene().name == lvl1)
         {
-            Debug.Log("ganó");
-            ban = false;
 
-
-            if (SceneManager.GetActiveScene().name == lvl1)
+            if (puntaje.ganar(10000) && ban)    //PUNTAJE crear una variable BAN para que no se siga repitiendo
             {
-           
+                Debug.Log("ganó");
+                ban = false;
                 SceneManager.LoadScene("VictoriaEscene");
+
             }
-            if (SceneManager.GetActiveScene().name == lvl2)
+        }
+
+
+        if (SceneManager.GetActiveScene().name == lvl2)
+        {
+            if (puntaje.ganar(15000) && ban)    //PUNTAJE crear una variable BAN para que no se siga repitiendo
             {
+                Debug.Log("ganó");
+                ban = false;
+
                 SceneManager.LoadScene("VictoriaEscene 2");
             }
-            if (SceneManager.GetActiveScene().name == lvl3)
+        }
+        if (SceneManager.GetActiveScene().name == lvl3)
+        {
+
+            if (puntaje.ganar(20000) && ban)    //PUNTAJE crear una variable BAN para que no se siga repitiendo
             {
+                Debug.Log("ganó");
+                ban = false;
                 SceneManager.LoadScene("VictoriaEscene 3");
             }
-            if (SceneManager.GetActiveScene().name == lvl4)
+        }
+
+        if (SceneManager.GetActiveScene().name == lvl4)
+        {
+            if (puntaje.ganar(25000) && ban)    //PUNTAJE crear una variable BAN para que no se siga repitiendo
             {
+                Debug.Log("ganó");
+                ban = false;
                 SceneManager.LoadScene("VictoriaEscene 4");
             }
         }
-                 
+
+
     }
 
     int dragX = -1;
@@ -183,23 +207,24 @@ public class Match3GameManager : MonoBehaviour {
 
         bool sw = TilesToDestroy.Count == 0;
 
-        puntaje.anadirPuntaje(TilesToDestroy.Count/3);
-        
+        puntaje.anadirPuntaje(TilesToDestroy.Count / 3);
+
         for (int i = 0; i < TilesToDestroy.Count; i++)
         {
             if (TilesToDestroy[i] != null)
             {
-  
-                foreach(Tile tile in TilesToDestroy){
+
+                foreach (Tile tile in TilesToDestroy)
+                {
                     Animator tileAnim = tile.GetComponent<Animator>();
                     tileAnim.SetBool("destruir", true);
                 }
                 Destroy(TilesToDestroy[i].gameObject, .5f);
                 InstantiateTile(TilesToDestroy[i].x, TilesToDestroy[i].y + sizeY);
-            }            
+            }
         }
 
-        if(!sw)
+        if (!sw)
             StartCoroutine(Gravity());
     }
 
@@ -208,7 +233,7 @@ public class Match3GameManager : MonoBehaviour {
     /// </summary>
     IEnumerator Gravity()
     {
-        bool Sw = true;        
+        bool Sw = true;
         while (Sw)
         {
             CanMove = false;
@@ -222,7 +247,7 @@ public class Match3GameManager : MonoBehaviour {
                         Sw = true;
                     }
                 }
-                
+
                 if (j <= sizeY && !fast) //<-Wait
                     yield return null;
             }
@@ -230,7 +255,7 @@ public class Match3GameManager : MonoBehaviour {
         yield return null;
         CanMove = true;
         Check();
-        
+
     }
 
     /// <summary>
@@ -242,10 +267,10 @@ public class Match3GameManager : MonoBehaviour {
             return false;
         if (grid[x, y] == null)
             return false;
-        if (grid[x, y-1] != null)
+        if (grid[x, y - 1] != null)
             return false;
-        
-        MoveTile(x, y, x, y-1);
+
+        MoveTile(x, y, x, y - 1);
         return true;
     }
 
@@ -295,7 +320,7 @@ public class Match3GameManager : MonoBehaviour {
         for (int i = 0; i < sizeX; i++)
         {
             for (int j = 0; j < sizeY; j++)
-            { 
+            {
                 if (grid[i, j].type != Type)
                 {
                     if (TilesToCheck.Count >= 3)
@@ -305,7 +330,7 @@ public class Match3GameManager : MonoBehaviour {
                     TilesToCheck.Clear();
                 }
                 Type = grid[i, j].type;
-                TilesToCheck.Add(grid[i,j]);
+                TilesToCheck.Add(grid[i, j]);
             }
 
             if (TilesToCheck.Count >= 3)
@@ -325,11 +350,11 @@ public class Match3GameManager : MonoBehaviour {
         if (grid[x1, y1] != null)
             grid[x1, y1].transform.position = new Vector3(x2, y2);
 
-            
-        if (grid[x2, y2] != null)        
+
+        if (grid[x2, y2] != null)
             grid[x2, y2].transform.position = new Vector3(x1, y1);
 
-            
+
         Tile temp = grid[x1, y1];
         grid[x1, y1] = grid[x2, y2];
         grid[x2, y2] = temp;
@@ -363,7 +388,7 @@ public class Match3GameManager : MonoBehaviour {
         if (animator != null)
         {
             animator.Play("movimientoHorizontal");
-            
+
         }
 
     }

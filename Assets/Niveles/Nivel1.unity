@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  maxScore: 51000
+  maxScore: 10100
   pointsPerMatch: 100
   puntajeTexto: {fileID: 1626612409}
   jugadorClick: 0
