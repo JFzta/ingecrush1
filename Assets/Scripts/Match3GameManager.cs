@@ -94,7 +94,7 @@ public class Match3GameManager : MonoBehaviour {
             print(s);
         }
 
-        if (puntaje.ganar(1000) && ban)    //PUNTAJE crear una variable BAN para que no se siga repitiendo
+        if (puntaje.ganar(50000) && ban)    //PUNTAJE crear una variable BAN para que no se siga repitiendo
         {
             Debug.Log("ganó");
             ban = false;

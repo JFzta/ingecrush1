@@ -12,7 +12,7 @@ public class Menu : MonoBehaviour
     {
         //Aca tendremos que enlazarlo con el ultimo nivel que haya pasado el jugador
         //En caso de ser su primera vez jugando entonces entrara al nivel 1
-        SceneManager.LoadScene("Escena1");
+        SceneManager.LoadScene("Nivel1");
 
         int ultimoNivelDisponible = PlayerPrefs.GetInt("NivelJugador", 1);
         SceneManager.LoadScene("Nivel" + ultimoNivelDisponible);

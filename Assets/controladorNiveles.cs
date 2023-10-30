@@ -37,7 +37,7 @@ public class controladorNiveles : MonoBehaviour
 
     public void aumentarNiveles ()
     {
-        if (desbloquearNiveles> PlayerPrefs.GetInt("nivelesDesbloqueados",1))
+        if (desbloquearNiveles> PlayerPrefs.GetInt("nivelesDesbloqueados", 1))
         {
             PlayerPrefs.SetInt("nivelesDesbloqueados", desbloquearNiveles);
         }
