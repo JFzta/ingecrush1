@@ -15,16 +15,16 @@ EditorBuildSettings:
     path: Assets/Niveles/Nivel1.unity
     guid: 195e91f6ffe5eb24a847d9c7ef1fce12
   - enabled: 1
-    path: Assets/Niveles/Nivel2.unity
+    path: Assets/Niveles/Nivel2_falso.unity
     guid: e5235ea03f16c51468ef8aa3fb631f2e
   - enabled: 1
-    path: Assets/Niveles/Nivel3.unity
+    path: Assets/Niveles/Nivel3_falso.unity
     guid: 20d3e367aaf429449a9cd99b8b3a751f
   - enabled: 1
-    path: Assets/Niveles/Nivel4.unity
+    path: Assets/Niveles/Nivel4_falso.unity
     guid: 4a4cdb7a838a900499a2e96713eadf4f
   - enabled: 1
-    path: Assets/Niveles/Nivel5.unity
+    path: Assets/Niveles/Nivel5_falso.unity
     guid: 4f498f595aea4604192ccbdff3ddd931
   - enabled: 1
     path: Assets/Escenas/MenuNiveles.unity

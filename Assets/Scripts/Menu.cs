@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+   
+
     // Start is called before the first frame update
     public void ButtomJugar()
     {
@@ -33,7 +35,6 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("MenuScene 1");
 
     }
-
 
 
 }
