@@ -102,6 +102,7 @@ public class Match3GameManager : MonoBehaviour {
 
             if (SceneManager.GetActiveScene().name == lvl1)
             {
+           
                 SceneManager.LoadScene("VictoriaEscene");
             }
             if (SceneManager.GetActiveScene().name == lvl2)
