@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Clase principal que gestiona el juego de combinación de 3 (Match-3).
@@ -37,7 +38,13 @@ public class Match3GameManager : MonoBehaviour {
     /// 
     [Header("animación")]
 
-    public Animator animator; 
+    public Animator animator;
+
+    string lvl1 = "Nivel1";
+    string lvl2 = "Nivel2";
+    string lvl3 = "Nivel3";
+    string lvl4 = "Nivel4";
+    string lvl5 = "Nivel5";
 
 
     void Start ()
@@ -51,6 +58,14 @@ public class Match3GameManager : MonoBehaviour {
                 InstantiateTile(i,j);
             }
         }
+
+        string lvl1 = "Nivel1";
+        string lvl2 = "Nivel2";
+        string lvl3 = "Nivel3";
+        string lvl4 = "Nivel4";
+        string lvl5 = "Nivel5";
+
+
         Check();
 
         animator = GetComponent<Animator>();
@@ -82,8 +97,27 @@ public class Match3GameManager : MonoBehaviour {
         if (puntaje.ganar(1000) && ban)    //PUNTAJE crear una variable BAN para que no se siga repitiendo
         {
             Debug.Log("ganó");
-            ban= false;
+            ban = false;
+
+
+            if (SceneManager.GetActiveScene().name == lvl1)
+            {
+                SceneManager.LoadScene("VictoriaEscene");
+            }
+            if (SceneManager.GetActiveScene().name == lvl2)
+            {
+                SceneManager.LoadScene("VictoriaEscene 2");
+            }
+            if (SceneManager.GetActiveScene().name == lvl3)
+            {
+                SceneManager.LoadScene("VictoriaEscene 3");
+            }
+            if (SceneManager.GetActiveScene().name == lvl4)
+            {
+                SceneManager.LoadScene("VictoriaEscene 4");
+            }
         }
+                 
     }
 
     int dragX = -1;
