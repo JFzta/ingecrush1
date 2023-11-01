@@ -219,7 +219,7 @@ public class Match3GameManager : MonoBehaviour
                     Animator tileAnim = tile.GetComponent<Animator>();
                     tileAnim.SetBool("destruir", true);
                 }
-                Destroy(TilesToDestroy[i].gameObject, .5f);
+                Destroy(TilesToDestroy[i].gameObject);
                 InstantiateTile(TilesToDestroy[i].x, TilesToDestroy[i].y + sizeY);
             }
         }
