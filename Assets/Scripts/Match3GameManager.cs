@@ -207,7 +207,8 @@ public class Match3GameManager : MonoBehaviour
 
         bool sw = TilesToDestroy.Count == 0;
 
-        puntaje.anadirPuntaje(TilesToDestroy.Count / 3);
+        if (!sw)
+            puntaje.anadirPuntaje(TilesToDestroy.Count / 3);
 
         for (int i = 0; i < TilesToDestroy.Count; i++)
         {
