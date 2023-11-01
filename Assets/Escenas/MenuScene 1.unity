@@ -2933,6 +2933,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63edf7015e0ffd84f9775cd79f5f139a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingSceneName: LoadingScene
+  fakeLoadingTime: 2
 --- !u!4 &1573664421
 Transform:
   m_ObjectHideFlags: 0
